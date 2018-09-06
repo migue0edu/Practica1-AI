@@ -1,21 +1,22 @@
 const {app, BrowserWindow} = require('electron');
-const {TILES, TILEALT, TILELONG, COLORES} = require('./tiles');
-const {leerArchivo} = require('./mapa');
-
-global.mapa = leerArchivo();
+const {TILES, TILEALT, TILELONG, COLORES, MAZE} = require('./misc/tiles');
+const {leerArchivo} = require('./misc/mapa');
+let file = 'maze.txt';
+global.mapa = leerArchivo(file);
 global.colores = COLORES;
 global.tilealt = TILEALT;
 global.tilelong = TILELONG;
-global.mapinit = {x: 0, y: 0};
+global.maze = MAZE;
 
 
 let win;
 
 function createWindow () {
     win = new BrowserWindow({width: 900, height: 425, resizable: false});
-
-    win.loadFile('index.html');
-    //win.loadURL('https://miguel-nodeapp.herokuapp.com');
+    if(file === 'mapa.txt');
+        win.loadFile('terrainmap.html');
+    if(file === 'maze.txt');
+        win.loadFile('maze.html');
 
     win.on('closed', () => {
         win = null

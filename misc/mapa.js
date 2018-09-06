@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-let leerArchivo = () => {
+let leerArchivo = (path) => {
 
-    let archivo = fs.readFileSync('./mapa.txt','utf8');
+    let archivo = fs.readFileSync(path,'utf8');
     let renglones = archivo.split('\r\n');
     let datos = [];
     for (let i = 0; i < renglones.length; i++) {

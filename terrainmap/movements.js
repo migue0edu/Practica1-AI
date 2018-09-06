@@ -1,4 +1,4 @@
-let {human, monkey, octopus, sasquatch} = require('./beings');
+let {human, monkey, octopus, sasquatch} = require('./terrainmap/beings');
 
 let posX = 0;
 let posY = 0;
@@ -72,7 +72,7 @@ function actualizarPosicion(dir){
     pintarCelda(posX, posY);
     switch (dir){
         case 'R':
-            if( posX === mapa[0].length){
+            if( posX === mapa[0].length - 1){
                 posX = posX;
             }else{
                 posX += 1;
@@ -89,7 +89,7 @@ function actualizarPosicion(dir){
             break;
 
         case 'D':
-            if( posY === mapa.length){
+            if( posY === mapa.length - 1){
                 posY = posY;
             }else{
                 posY += 1;

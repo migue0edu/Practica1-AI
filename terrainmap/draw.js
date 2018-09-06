@@ -67,7 +67,7 @@ function draw() {
             }
         }
         let image = document.getElementById("source");
-        image.src = './icons/face.png';
+        image.src = 'icons/face.png';
         image.width = TILELONG;
         image.height = TILEALT;
         ctx.drawImage(image, TILELONG, TILEALT, TILELONG, TILEALT);

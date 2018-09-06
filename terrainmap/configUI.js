@@ -7,6 +7,8 @@ let tipoTerreno = document.getElementById('tipoTerreno');
 //----------Opciones e inicializacion de elementos-------------------
 numberX.max = mapa.length - 1;
 numberX.min = 0;
+numberX.value = 0;
+
 let chars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
     'U', 'V', 'W', 'X', 'Y', 'Z'];
 let terrenos = ['Mountain', 'Land', 'Water', 'Sand', 'Forest', 'Swamp', 'Snow'];
