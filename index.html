@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <meta charset="utf-8"/>
+        <script src="draw.js"></script>
+    </head>
+    <body onload="draw();">
+        <div class="row">
+            <!-------------Columna para el mapa--------------->
+            <div class="col s12 m8 l8">
+                <canvas id="canvas" width="600" height="500" style="border: 1px solid black; padding: 5px;"></canvas>
+            </div>
+            <!-------------Columna para la interfaz--------------->
+            <div class="col s12 m4 l4">
+                <div class="row" >
+                    <div class="col s12 m12 l12" style="background: #82B1FF;">
+                        <h5 align="center" >Coordinates</h5>
+                    </div>
+
+                    <div class="col s12 m12 l12" style="background: #c2ddff;">
+                        <div class="input-field col s4">
+                            <input placeholder="0" id="cordX" type="number" class="validate">
+                        </div>
+                        <div class="input-field col s4 ">
+                            <select id="cordY" class="validate"></select>
+                        </div>
+                        <div class="col s4 ">
+                            <div class="valign-wrapper" style="height: 75px;">
+                                <button class="waves-effect waves-light btn-small" onclick="obtenerTipoTerreno()">
+                                    <i class="material-icons">search</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12 l12" align="center">
+                                Terrain:
+                                <span id="tipoTerreno"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m12 l12" style="background: #36ff8b">
+                        <h5 align="center">Change Terrain</h5>
+                    </div>
+
+                    <div class="col s12 m12 l12 " style="background: #93ffbe">
+                        <div class="input-field col s8">
+                            <select id="newTerrain" class="validate"></select>
+                            <label>TO:</label>
+                        </div>
+                        <div class="col s4">
+                            <div class="valign-wrapper" style="height: 75px;">
+                                <button class="waves-effect waves-light btn-small" onclick="actualizarTipoTerreno()">
+                                    <i class="material-icons">check</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----------------Termina columna interfaz-------------->
+        </div>
+
+        <div style="display: none;">
+            <img id="source">
+        </div>
+
+
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="configUI.js"></script>
+        <script type="text/javascript" src="actions.js"></script>
+        <script type="text/javascript" src="movements.js"></script>
+    </body>
+</html>
