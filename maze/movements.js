@@ -1,7 +1,7 @@
 let {human, monkey, octopus, sasquatch} = require('./terrainmap/beings');
 
-let posX = 0;
-let posY = 0;
+let posX = Number.parseInt(INIT.y);
+let posY = Number.parseInt(INIT.x);
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
@@ -9,7 +9,7 @@ let image = document.getElementById("source");
 image.src = './icons/face.png';
 image.width = TILELONG;
 image.height = TILEALT;
-ctx.drawImage(image, posX, posY, TILELONG, TILEALT);
+ctx.drawImage(image, (posX+1)*TILELONG , (posY+1)*TILEALT, TILELONG, TILEALT);
 
 
 function keyUpHandler(event) {

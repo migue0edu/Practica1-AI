@@ -1,6 +1,7 @@
 const TILELONG = require('electron').remote.getGlobal('tilelong');
 const TILEALT = require('electron').remote.getGlobal('tilealt');
 const MAZE = require('electron').remote.getGlobal('maze');
+const INIT = require('electron').remote.getGlobal('initialPos');
 
 let mapa = require('electron').remote.getGlobal('mapa');
 //
@@ -56,6 +57,6 @@ function draw() {
         image.src = 'icons/face.png';
         image.width = TILELONG;
         image.height = TILEALT;
-        ctx.drawImage(image, TILELONG, TILEALT, TILELONG, TILEALT);
+        ctx.drawImage(image, (Number.parseInt(INIT.y) + 1)*TILELONG, (Number.parseInt(INIT.x) + 1)*TILEALT, TILELONG, TILEALT);
     }
 }

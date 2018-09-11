@@ -36,6 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('.modal');
+    let instances = M.Modal.init(elems, {opacity: 1});
+});
+
 //-------------------------Configuracion de estilos------------------
 let h5s = document.querySelectorAll('h5');
 for (let i = 0; i < h5s.length; i++) {
