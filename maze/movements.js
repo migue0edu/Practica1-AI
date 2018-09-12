@@ -3,7 +3,7 @@ let {human, monkey, octopus, sasquatch} = require('./terrainmap/beings');
 let posX = Number.parseInt(INIT.y);
 let posY = Number.parseInt(INIT.x);
 
-let canvas = document.getElementById("canvas");
+
 let ctx = canvas.getContext("2d");
 let image = document.getElementById("source");
 image.src = './icons/face.png';
@@ -48,6 +48,15 @@ function pintarCelda(x, y){
     ctx.strokeRect((x+1)*TILELONG, (y+1)*TILEALT, TILELONG, TILEALT);
 }
 
+function quitarNiebla(x, y){
+    let ctxl = layer1.getContext('2d');
+    ctxl.clearRect(x*TILELONG, y*TILEALT, TILELONG, TILEALT);
+    ctxl.clearRect((x+1)*TILELONG, y*TILEALT, TILELONG, TILEALT);
+    ctxl.clearRect((x-1)*TILELONG, y*TILEALT, TILELONG, TILEALT);
+    ctxl.clearRect(x*TILELONG, (y+1)*TILEALT, TILELONG, TILEALT);
+    ctxl.clearRect(x*TILELONG, (y-1)*TILEALT, TILELONG, TILEALT);
+}
+
 function actualizarPosicion(dir){
     pintarCelda(posX, posY);
     switch (dir){
@@ -57,7 +66,6 @@ function actualizarPosicion(dir){
             }else{
                 posX += 1;
             }
-
             break;
 
         case 'L':
@@ -84,6 +92,7 @@ function actualizarPosicion(dir){
             }
             break;
     }
+    quitarNiebla(posX, posY);
     ctx.drawImage(image, (posX+1)*TILELONG, (posY+1)*TILEALT, TILELONG, TILEALT);
 
 }

@@ -8,7 +8,7 @@ global.colores = COLORES;
 global.tilealt = TILEALT;
 global.tilelong = TILELONG;
 global.maze = MAZE;
-global.tipo = 'maze';
+global.tipo = 'tilemap';
 global.initialPos = {x: 0, y:0};
 
 

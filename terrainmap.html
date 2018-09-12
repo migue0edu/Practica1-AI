@@ -12,7 +12,9 @@
         <div class="row">
             <!-------------Columna para el mapa--------------->
             <div class="col s12 m8 l8">
-                <canvas id="canvas" width="600" height="500" style="border: 1px solid black; padding: 5px;"></canvas>
+                <canvas id="canvas" style="border: 1px solid black; padding: 5px; position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+                <canvas id="layer1"
+                        style="position: absolute; left: 40px; top: 25px; z-index: 1;"></canvas>
             </div>
             <!-------------Columna para la interfaz--------------->
             <div class="col s12 m4 l4">
@@ -72,6 +74,7 @@
 
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="terrainmap/configUI.js"></script>
+        <script type="text/javascript" src="misc/mask.js"></script>
         <script type="text/javascript" src="terrainmap/actions.js"></script>
         <script type="text/javascript" src="terrainmap/movements.js"></script>
     </body>

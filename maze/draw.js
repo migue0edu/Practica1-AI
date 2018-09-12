@@ -2,14 +2,12 @@ const TILELONG = require('electron').remote.getGlobal('tilelong');
 const TILEALT = require('electron').remote.getGlobal('tilealt');
 const MAZE = require('electron').remote.getGlobal('maze');
 const INIT = require('electron').remote.getGlobal('initialPos');
-
 let mapa = require('electron').remote.getGlobal('mapa');
-//
+
 
 function draw() {
     let canvas = document.getElementById('canvas');
-    canvas.width = (TILELONG * mapa[0].length) + TILELONG;
-    canvas.height = (TILEALT * mapa.length) + TILEALT;
+
     if (canvas.getContext) {
 
         let ctx = canvas.getContext('2d');

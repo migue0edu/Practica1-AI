@@ -1,14 +1,13 @@
 const TILELONG = require('electron').remote.getGlobal('tilelong');
 const TILEALT = require('electron').remote.getGlobal('tilealt');
 const COLORES = require('electron').remote.getGlobal('colores');
-
+const INIT = require('electron').remote.getGlobal('initialPos');
 let mapa = require('electron').remote.getGlobal('mapa');
-//
+
 
 function draw() {
     let canvas = document.getElementById('canvas');
-    canvas.width = (TILELONG * mapa[0].length) + TILELONG;
-    canvas.height = (TILEALT * mapa.length) + TILEALT;
+
     if (canvas.getContext) {
 
         let ctx = canvas.getContext('2d');
@@ -70,6 +69,6 @@ function draw() {
         image.src = 'icons/face.png';
         image.width = TILELONG;
         image.height = TILEALT;
-        ctx.drawImage(image, TILELONG, TILEALT, TILELONG, TILEALT);
+        ctx.drawImage(image, (Number.parseInt(INIT.y) + 1)*TILELONG, (Number.parseInt(INIT.x) + 1)*TILEALT, TILELONG, TILEALT);
     }
 }

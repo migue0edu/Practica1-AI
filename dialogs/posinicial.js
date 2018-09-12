@@ -23,8 +23,11 @@ function checarPosicionInicial() {
         }else{
             require('electron').remote.getGlobal('initialPos').x = initX.value;
             require('electron').remote.getGlobal('initialPos').y = initY.value;
-            window.close();
         }
     }
-
+    else{
+        require('electron').remote.getGlobal('initialPos').x = initX.value;
+        require('electron').remote.getGlobal('initialPos').y = initY.value;
+    }
+    window.close();
 };

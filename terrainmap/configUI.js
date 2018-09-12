@@ -2,7 +2,18 @@ let numberX = document.getElementById('cordX');
 let numberY = document.getElementById('cordY');
 let nuevoTerreno = document.getElementById('newTerrain');
 let tipoTerreno = document.getElementById('tipoTerreno');
+let canvas = document.getElementById('canvas');
+let layer1 = document.getElementById('layer1');
 
+
+//----------Configuracion del mapa-----------------------------------
+layer1.width = (TILELONG * mapa[0].length);
+layer1.height = (TILEALT * mapa.length);
+canvas.width = layer1.width + TILELONG;
+canvas.height = layer1.height + TILEALT;
+
+layer1.top = TILEALT + 5;
+layer1.left = TILELONG + 5;
 
 //----------Opciones e inicializacion de elementos-------------------
 numberX.max = mapa.length - 1;
