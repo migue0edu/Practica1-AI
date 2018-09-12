@@ -3,15 +3,6 @@ let {human, monkey, octopus, sasquatch} = require('./terrainmap/beings');
 let posX = Number.parseInt(INIT.y);
 let posY = Number.parseInt(INIT.x);
 
-
-let ctx = canvas.getContext("2d");
-let image = document.getElementById("source");
-image.src = './icons/face.png';
-image.width = TILELONG;
-image.height = TILEALT;
-ctx.drawImage(image, (posX+1)*TILELONG , (posY+1)*TILEALT, TILELONG, TILEALT);
-
-
 function keyUpHandler(event) {
     if(event.keyCode === 39) {
         console.log('Right');
@@ -31,21 +22,9 @@ function keyUpHandler(event) {
     }
 }
 
-function pintarCelda(x, y){
-    let celda = mapa[y][x];
-    switch (celda) {
-        case '0':
-            ctx.fillStyle = MAZE.WALL;
-            break;
-
-        case '1':
-            ctx.fillStyle = MAZE.ROAD;
-            break;
-        default:
-            ctx.fillStyle = 'rgb(0, 0, 0)';
-    }
-    ctx.fillRect((x+1)*TILELONG, (y+1)*TILEALT, TILELONG, TILEALT);
-    ctx.strokeRect((x+1)*TILELONG, (y+1)*TILEALT, TILELONG, TILEALT);
+function actualizarJugador(x, y){
+    let ctx2 = layer2.getContext('2d');
+    ctx2.drawImage(image, (x)*TILELONG, (y)*TILEALT, TILELONG, TILEALT);
 }
 
 function quitarNiebla(x, y){
@@ -58,7 +37,8 @@ function quitarNiebla(x, y){
 }
 
 function actualizarPosicion(dir){
-    pintarCelda(posX, posY);
+    let ctx2 = layer2.getContext('2d');
+    ctx2.clearRect(posX*TILELONG, (posY)*TILEALT, TILELONG, TILEALT);
     switch (dir){
         case 'R':
             if( (posX === mapa[0].length - 1) || (mapa[posY][posX + 1] === '0') ){
@@ -93,9 +73,7 @@ function actualizarPosicion(dir){
             break;
     }
     quitarNiebla(posX, posY);
-    ctx.drawImage(image, (posX+1)*TILELONG, (posY+1)*TILEALT, TILELONG, TILEALT);
-
+    actualizarJugador(posX, posY);
 }
 
 document.addEventListener('keyup', keyUpHandler, false);
-

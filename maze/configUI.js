@@ -4,15 +4,20 @@ let nuevoTerreno = document.getElementById('newTerrain');
 let tipoTerreno = document.getElementById('tipoTerreno');
 let canvas = document.getElementById('canvas');
 let layer1 = document.getElementById('layer1');
+let layer2 = document.getElementById('layer2');
 
 //----------Configuracion del mapa-----------------------------------
 layer1.width = (TILELONG * mapa[0].length);
 layer1.height = (TILEALT * mapa.length);
+layer2.width = layer1.width;
+layer2.height = layer1.height;
 canvas.width = layer1.width + TILELONG;
 canvas.height = layer1.height + TILEALT;
 
 layer1.top = TILEALT + 5;
 layer1.left = TILELONG + 5;
+layer2.top = layer1.top;
+layer2.left = layer1.top;
 
 //----------Opciones e inicializacion de elementos-------------------
 numberX.max = mapa.length - 1;
@@ -39,13 +44,6 @@ for (let i = 0; i < terrenos.length; i++) {
 let instance = M.FormSelect.init(numberY, {});
 instance = M.FormSelect.init(nuevoTerreno, {});
 
-document.addEventListener('DOMContentLoaded', function() {
-    let elems = document.querySelectorAll('.fixed-action-btn');
-    let instances = M.FloatingActionButton.init(elems, {
-        direction: 'left'
-    });
-});
-
 //-------------------------Configuracion de estilos------------------
 let h5s = document.querySelectorAll('h5');
 for (let i = 0; i < h5s.length; i++) {
@@ -53,3 +51,8 @@ for (let i = 0; i < h5s.length; i++) {
 }
 tipoTerreno.style.fontWeight = 'bold';
 document.querySelector('label').style.color = 'Black';
+
+let image = document.getElementById("source");
+image.src = 'icons/face.png';
+image.width = TILELONG;
+image.height = TILEALT;

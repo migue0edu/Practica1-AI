@@ -8,7 +8,7 @@ global.colores = COLORES;
 global.tilealt = TILEALT;
 global.tilelong = TILELONG;
 global.maze = MAZE;
-global.tipo = 'tilemap';
+global.tipo = 'maze';
 global.initialPos = {x: 0, y:0};
 
 
@@ -30,7 +30,7 @@ function createWindow () {
     });
     child.on('closed', () => {
         win.reload();
-       console.log(global.initialPos);
+       console.log(`x: ${global.initialPos.y}, y: ${global.initialPos.x}`);
     });
 
 

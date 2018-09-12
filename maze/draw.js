@@ -9,7 +9,8 @@ function draw() {
     let canvas = document.getElementById('canvas');
 
     if (canvas.getContext) {
-
+        let ctx2 = layer2.getContext('2d');
+        ctx2.drawImage(image, Number.parseInt(INIT.y)*TILELONG, Number.parseInt(INIT.x)*TILEALT, TILELONG, TILEALT);
         let ctx = canvas.getContext('2d');
         ctx.fillStyle = "rgba(59, 62, 64, 0.5)";
         ctx.fillRect(0, 0, TILELONG, TILEALT);
@@ -51,10 +52,6 @@ function draw() {
                 ctx.strokeRect((j+1)*TILELONG, (i+1)*TILEALT, TILELONG, TILEALT);
             }
         }
-        let image = document.getElementById("source");
-        image.src = 'icons/face.png';
-        image.width = TILELONG;
-        image.height = TILEALT;
-        ctx.drawImage(image, (Number.parseInt(INIT.y) + 1)*TILELONG, (Number.parseInt(INIT.x) + 1)*TILEALT, TILELONG, TILEALT);
+
     }
 }
