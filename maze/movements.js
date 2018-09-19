@@ -45,6 +45,7 @@ function actualizarPosicion(dir){
                 posX = posX;
             }else{
                 posX += 1;
+                actualizarDatos(posX, posY, posX-1, posY);
             }
             break;
 
@@ -53,7 +54,9 @@ function actualizarPosicion(dir){
                 posX = posX;
             }else{
                 posX -= 1;
+                actualizarDatos(posX, posY, posX+1, posY);
             }
+
             break;
 
         case 'D':
@@ -61,6 +64,7 @@ function actualizarPosicion(dir){
                 posY = posY;
             }else{
                 posY += 1;
+                actualizarDatos(posX, posY, posX, posY-1);
             }
             break;
 
@@ -69,9 +73,11 @@ function actualizarPosicion(dir){
                 posY = posY;
             }else{
                 posY -= 1;
+                actualizarDatos(posX, posY, posX, posY+1);
             }
             break;
     }
+    esDescicion(posX, posY);
     quitarNiebla(posX, posY);
     actualizarJugador(posX, posY);
 }

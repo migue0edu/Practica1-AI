@@ -5,12 +5,15 @@ let tipoTerreno = document.getElementById('tipoTerreno');
 let canvas = document.getElementById('canvas');
 let layer1 = document.getElementById('layer1');
 let layer2 = document.getElementById('layer2');
+let layer3 = document.getElementById('layer3');
 
 //----------Configuracion del mapa-----------------------------------
 layer1.width = (TILELONG * mapa[0].length);
 layer1.height = (TILEALT * mapa.length);
 layer2.width = layer1.width;
 layer2.height = layer1.height;
+layer3.height = layer1.height;
+layer3.width = layer1.width;
 canvas.width = layer1.width + TILELONG;
 canvas.height = layer1.height + TILEALT;
 
@@ -18,6 +21,8 @@ layer1.top = TILEALT + 5;
 layer1.left = TILELONG + 5;
 layer2.top = layer1.top;
 layer2.left = layer1.top;
+layer3.top = layer1.top;
+layer3.left = layer1.top;
 
 //----------Opciones e inicializacion de elementos-------------------
 numberX.max = mapa.length - 1;

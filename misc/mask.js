@@ -1,6 +1,6 @@
 if(layer1.getContext){
     let ctx1 = layer1.getContext('2d');
-    ctx1.fillStyle = "rgba(170, 170, 170, 0.85)";
+    ctx1.fillStyle = "rgba(1, 1, 1, 1)";
     ctx1.fillRect(0, 0, layer1.width, layer1.height);
     ctx1.fillStyle = "rgba(33, 33, 33, 0)";
     let posIy = Number.parseInt(INIT.y);

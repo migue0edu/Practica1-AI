@@ -2,6 +2,7 @@ const TILELONG = require('electron').remote.getGlobal('tilelong');
 const TILEALT = require('electron').remote.getGlobal('tilealt');
 const MAZE = require('electron').remote.getGlobal('maze');
 const INIT = require('electron').remote.getGlobal('initialPos');
+const END = require('electron').remote.getGlobal('endPos');
 let mapa = require('electron').remote.getGlobal('mapa');
 
 

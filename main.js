@@ -10,6 +10,7 @@ global.tilelong = TILELONG;
 global.maze = MAZE;
 global.tipo = 'maze';
 global.initialPos = {x: 0, y:0};
+global.endPos = {x:0, y:0};
 
 
 let win;
@@ -30,10 +31,9 @@ function createWindow () {
     });
     child.on('closed', () => {
         win.reload();
-       console.log(`x: ${global.initialPos.y}, y: ${global.initialPos.x}`);
+       console.log(`Start: [ x: ${global.initialPos.y}, y: ${global.initialPos.x} ]`);
+       console.log(`End: [ x: ${global.endPos.y}, y: ${global.endPos.x} ]`);
     });
-
-
 
 
     win.on('closed', () => {
@@ -44,7 +44,6 @@ function createWindow () {
 app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
-
     if (process.platform !== 'darwin') {
         app.quit()
     }
