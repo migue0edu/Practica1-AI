@@ -1,8 +1,11 @@
-let {human, monkey, octopus, sasquatch} = require('./terrainmap/beings');
+const {beings, Being} = require('./terrainmap/beings');
 
 let posX = Number.parseInt(INIT.y);
 let posY = Number.parseInt(INIT.x);
 
+let totalCost = 0;
+let p1ayerName = require('electron').remote.getGlobal('being').name;
+let p1 = beings[beings.findIndex(x => x.name === p1ayerName)];
 
 let ctx = canvas.getContext("2d");
 let image = document.getElementById("source");
@@ -77,23 +80,101 @@ function quitarNiebla(x, y){
     ctxl.clearRect(x*TILELONG, (y-1)*TILEALT, TILELONG, TILEALT);
 }
 
+function contarCosto(x, y) {
+
+    let cost = document.getElementById('cost');
+    let value = mapa[y][x];
+    for (being of beings) {
+        if (p1.name === being.name) {
+            switch (value) {
+                case '0':
+                    totalCost += being.mountain;
+                    break;
+
+                case '1':
+                    totalCost += being.land;
+                    break;
+
+                case '2':
+                    totalCost += being.water;
+                    break;
+
+                case '3':
+                    totalCost += being.sand;
+                    break;
+
+                case '4':
+                    totalCost += being.forest;
+                    break;
+
+                case '5':
+                    totalCost += being.swamp;
+                    break;
+
+                case '6':
+                    totalCost += being.snow;
+                    break;
+
+            }
+        }
+    }
+    cost.innerText = totalCost;
+}
+
+function terrenoValido(x, y){
+    let value = mapa[y][x];
+    switch (value){
+        case '0':
+            return p1.mountain !== -1;
+
+        case '1':
+            return p1.land !== -1;
+
+        case '2':
+            return p1.water !== -1;
+
+
+        case '3':
+            return p1.sand !== -1;
+
+
+        case '4':
+            return p1.forest !== -1;
+
+
+        case '5':
+            return p1.swamp !== -1;
+
+
+        case '6':
+            return p1.snow !== -1;
+
+    }
+
+}
+
 function actualizarPosicion(dir){
     pintarCelda(posX, posY);
     switch (dir){
         case 'R':
-            if( posX === mapa[0].length - 1){
+            if( posX === mapa[0].length - 1 ){
                 posX = posX;
             }else{
-                posX += 1;
+                if(terrenoValido(posX+1, posY)){
+                    posX += 1;
+                    contarCosto(posX, posY);
+                }
             }
-
             break;
 
         case 'L':
             if( posX === 0){
                 posX = posX;
             }else{
-                posX -= 1;
+                if(terrenoValido(posX-1, posY)){
+                    posX -= 1;
+                    contarCosto(posX, posY);
+                }
             }
             break;
 
@@ -101,7 +182,10 @@ function actualizarPosicion(dir){
             if( posY === mapa.length - 1){
                 posY = posY;
             }else{
-                posY += 1;
+                if(terrenoValido(posX, posY+1)){
+                    posY += 1;
+                    contarCosto(posX, posY);
+                }
             }
             break;
 
@@ -109,10 +193,14 @@ function actualizarPosicion(dir){
             if( posY === 0){
                 posY = posY;
             }else{
-                posY -= 1;
+                if(terrenoValido(posX, posY-1)){
+                    posY -= 1;
+                    contarCosto(posX, posY);
+                }
             }
             break;
     }
+
     quitarNiebla(posX, posY);
     ctx.drawImage(image, (posX+1)*TILELONG, (posY+1)*TILEALT, TILELONG, TILEALT);
 
