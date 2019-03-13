@@ -61,3 +61,8 @@ let image = document.getElementById("source");
 image.src = 'icons/face.png';
 image.width = TILELONG;
 image.height = TILEALT;
+
+let tipoMapa = require('electron').remote.getGlobal('tipo');
+if( tipoMapa === 'maze'){
+    document.getElementById('cost').style.display = 'none';
+}

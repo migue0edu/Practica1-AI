@@ -12,6 +12,7 @@ global.tipo = 'maze';
 global.initialPos = {x: 0, y:0};
 global.endPos = {x:0, y:0};
 global.being = {name: ''};
+global.solutionTree = {tree: {}};
 
 
 let win;
@@ -62,7 +63,6 @@ const template = [
     {
         label: 'Load file',
         click(){
-            console.log(dialog.showOpenDialog({properties: ['openFile']}));
             global.mapa = leerArchivo(dialog.showOpenDialog({properties: ['openFile']})[0]);
             instanceChild();
             instanceChild2();
@@ -85,6 +85,17 @@ const template = [
         }
     },
     {
+        label: 'Show Tree',
+        click() {
+            //console.log(solutionTree);
+            child2 = new BrowserWindow({ width: 500, height: 800, parent: win, modal: true, show: false});
+            child2.loadFile('dialogs/treegraphic.html');
+            child2.setAutoHideMenuBar(true);
+            child2.setMenuBarVisibility(false);
+            child2.show();
+        }
+    },
+    {
         label: 'Console',
         role: 'toggleDevTools'
     }
@@ -104,7 +115,7 @@ function instanceChild2() {
 }
 
 function createWindow () {
-    win = new BrowserWindow({width: 900, height: 425, resizable: false, show: false});
+    win = new BrowserWindow({width: 900, height: 450, resizable: false, show: false});
     win.loadFile('maze.html');
     instanceChild();
     instanceChild2();

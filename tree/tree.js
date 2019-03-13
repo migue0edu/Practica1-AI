@@ -85,3 +85,7 @@ Tree.prototype.addChild = function (child, nodeCoord) {
 Tree.prototype.setSolved = function () {
    this.solved = true;
 };
+
+Tree.prototype.makeGlobal = function () {
+    require('electron').remote.getGlobal('solutionTree').tree = this;
+};
